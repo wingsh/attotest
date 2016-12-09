@@ -1,7 +1,7 @@
 package attotest;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import org.testng.AssertJUnit;
@@ -22,7 +22,7 @@ public class SeleniumTest {
 	public RemoteWebDriver driver;
 	public static String appURL = "http://www.google.com";
 	
-	@BeforeClass
+	@BeforeTest
 	public void setUp() throws MalformedURLException {
 		System.setProperty("webdriver.chrome.driver", "chromedriver");
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -48,7 +48,7 @@ public class SeleniumTest {
 		}
 	}
 	
-	@AfterClass
+	@AfterTest
 	public void closeBrowser() {
 		if (driver != null) {
 			driver.quit();
