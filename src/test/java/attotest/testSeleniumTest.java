@@ -17,7 +17,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class SeleniumTest {
+public class testSeleniumTest {
 	
 	public RemoteWebDriver driver;
 	public static String appURL = "http://www.google.com";
