@@ -5,5 +5,10 @@
     <classes>
       <class name="attotest.testSeleniumTest"/>
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test> <!-- Test -->  
+  <test name="Login Test">
+    <classes>
+      <class name="attotest.testLoginTest"/>
+    </classes>
+  </test>
+</suite>

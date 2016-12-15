@@ -13,15 +13,17 @@ import java.sql.Timestamp;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class testSeleniumTest {
+public class testLoginTest {
 	
 	public RemoteWebDriver driver;
-	public static String appURL = "http://www.google.com";
+	public static String appURL = "http://10.61.129.81:8009";
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	
 	@BeforeTest
@@ -33,14 +35,26 @@ public class testSeleniumTest {
 	}
 	
 	@Test
-	public void testGooglePageTitleInIEBrowser() {
-		System.out.println("*** Navigation to Application ***");
+	public void testValidLoginTest() throws InterruptedException {
+		System.out.println("*** Valid UserID & Password ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
-		System.out.println("*** Verifying page title ***");
 
-		AssertJUnit.assertTrue(strPageTitle.equalsIgnoreCase("Google"));
+		AssertJUnit.assertTrue(strPageTitle.equalsIgnoreCase("Athene Login"));
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+		// find element user name & password & submit			
+		WebElement username = driver.findElement(By.name("userid"));
+		WebElement passwd = driver.findElement(By.name("pw"));
+		WebElement login = driver.findElement(By.id("submit"));
+					
+		username.sendKeys("athene");
+		Thread.sleep(1000);
+		passwd.sendKeys("athene");
+		Thread.sleep(1000);
+					
+		login.submit();
+		Thread.sleep(10000);
 		
 		// Capture
 		try {
