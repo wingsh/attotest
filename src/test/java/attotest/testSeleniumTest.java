@@ -9,6 +9,7 @@ import org.testng.AssertJUnit;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -21,6 +22,8 @@ public class testSeleniumTest {
 	
 	public RemoteWebDriver driver;
 	public static String appURL = "http://www.google.com";
+	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	
 	
 	@BeforeTest
 	public void setUp() throws MalformedURLException {
@@ -36,13 +39,14 @@ public class testSeleniumTest {
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
 		System.out.println("*** Verifying page title ***");
+
 		AssertJUnit.assertTrue(strPageTitle.equalsIgnoreCase("Google"));
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		
 		// Capture
 		try {
 			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(scrFile, new File("scrFile.png"));
+			FileUtils.copyFile(scrFile, new File(timestamp+".png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
