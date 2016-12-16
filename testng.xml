@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-<!-- 
-  <test name="Test">
+<suite name="Suite"> 
+  <test name="Login Test - Invaild User Test">
     <classes>
-      <class name="attotest.testSeleniumTest"/>
+      <class name="attotest.testInvaildUserTest"/>
+    </classes>
+  </test>
+  <test name="Login Test - Invaild Password Test">
+    <classes>
+      <class name="attotest.testInvaildPasswordTest"/>
     </classes>
   </test> 
- --> 
-  <test name="Login Test">
+  <test name="Login Test - Valid Test">
     <classes>
       <class name="attotest.testLoginTest"/>
     </classes>
