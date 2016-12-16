@@ -46,4 +46,13 @@
       <version>4.3.5</version>
     </dependency>
   </dependencies>
+  <build>
+  	<finalName>name</finalName>
+  	<plugins>
+  		<plugin>
+  			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.6.0</version>
+		</plugin>
+	</plugins>
+  </build>
 </project>
