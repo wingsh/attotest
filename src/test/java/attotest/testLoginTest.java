@@ -320,7 +320,7 @@ public class testLoginTest {
 			
 			if (!driver.getPageSource().contains("Edit Yout Profile"))
 				driver.close();
-			
+	
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
@@ -328,6 +328,11 @@ public class testLoginTest {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			
+			
+			Thread.sleep(5000);
+			System.out.println("Finished Login Test Case");
+		
 			
 			} catch (Error e) {
 	            verificationErrors.append(e.toString());
