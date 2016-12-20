@@ -9,6 +9,12 @@ import org.testng.AssertJUnit;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
+import java.io.File;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
+
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Timestamp;
@@ -27,6 +33,7 @@ public class testLoginTest {
 	public static String appURL = "http://10.61.129.81:8009";
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	private StringBuffer verificationErrors = new StringBuffer();
+
 	
 	@BeforeTest
 	public void setUp() throws MalformedURLException {
@@ -69,6 +76,14 @@ public class testLoginTest {
 			
 			assertEquals(loginErrormsg, "invalid password or id");
 			
+			// Capture
+			try {
+				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(scrFile, new File(timestamp+".png"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			username.clear();
 			passwd.clear();
 		} catch (Error e) {
@@ -103,6 +118,14 @@ public class testLoginTest {
 			System.out.println(loginErrormsg);
 						
 			assertEquals(loginErrormsg, "invalid password or id");
+			
+			// Capture
+			try {
+				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(scrFile, new File(timestamp+".png"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 			username.clear();
 			passwd.clear();
