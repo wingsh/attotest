@@ -33,6 +33,8 @@ public class testLoginTest {
 	public static String appURL = "http://10.61.129.81:8009";
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	private StringBuffer verificationErrors = new StringBuffer();
+	private static final String CAPTURE_PATH = "test-output/";
+
 
 	
 	@BeforeTest
@@ -79,7 +81,7 @@ public class testLoginTest {
 			// Capture
 			try {
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				FileUtils.copyFile(scrFile, new File("Login Test-invaild user "+timestamp+".png"));
+				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-invaild user.png"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -122,7 +124,7 @@ public class testLoginTest {
 			// Capture
 			try {
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				FileUtils.copyFile(scrFile, new File("Login Test-invaild password "+timestamp+".png"));
+				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-invaild password.png"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -176,7 +178,7 @@ public class testLoginTest {
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-					FileUtils.copyFile(scrFile, new File("Login Test-vaild_Service List "+timestamp+".png"));
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Service List.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -192,7 +194,7 @@ public class testLoginTest {
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-					FileUtils.copyFile(scrFile, new File("Login Test-vaild_Add New "+timestamp+".png"));
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Add New.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -213,7 +215,7 @@ public class testLoginTest {
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-					FileUtils.copyFile(scrFile, new File("Login Test-vaild_Cluster List "+timestamp+".png"));
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Cluster List.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -229,7 +231,7 @@ public class testLoginTest {
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-					FileUtils.copyFile(scrFile, new File("Login Test-vaild_Add Cluster "+timestamp+".png"));
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Add Cluster.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -250,7 +252,7 @@ public class testLoginTest {
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-					FileUtils.copyFile(scrFile, new File("Login Test-vaild_Cnode List "+timestamp+".png"));
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Cnode List.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -266,7 +268,7 @@ public class testLoginTest {
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-					FileUtils.copyFile(scrFile, new File("Login Test-vaild_Add Cnode "+timestamp+".png"));
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Add Cnode.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -287,7 +289,7 @@ public class testLoginTest {
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-					FileUtils.copyFile(scrFile, new File("Login Test-vaild_Subnet List "+timestamp+".png"));
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Subnet List.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -303,7 +305,7 @@ public class testLoginTest {
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-					FileUtils.copyFile(scrFile, new File("Login Test-vaild_Add Subnet "+timestamp+".png"));
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Add Subnet.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -324,7 +326,7 @@ public class testLoginTest {
 			// Capture
 			try {
 					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-					FileUtils.copyFile(scrFile, new File("Login Test-vaild_Your Profile "+timestamp+".png"));
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Your Profile.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
