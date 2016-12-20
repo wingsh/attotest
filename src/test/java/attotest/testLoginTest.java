@@ -172,6 +172,14 @@ public class testLoginTest {
 			
 			if (!driver.getPageSource().contains("Athene Chaining Services"))
 				driver.close();
+			
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File("Login Test - vaild - Service List"+timestamp+".png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
             
             //Check Add New Page
             WebElement s_menu_addnew = driver.findElement(By.xpath("//*[contains(text(), 'Add New')]"));
@@ -180,6 +188,14 @@ public class testLoginTest {
 			
 			if (!driver.getPageSource().contains("New Network Service"))
 				driver.close();
+			
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File("Login Test - vaild - Add New"+timestamp+".png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			
 			// Cluster
             WebElement m_menu_cluster = driver.findElement(By.xpath("//*[contains(text(), 'Cluster')]"));
@@ -194,6 +210,14 @@ public class testLoginTest {
 			if (!driver.getPageSource().contains("Cluster List"))
 				driver.close();
 			
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File("Login Test - vaild - Cluster List"+timestamp+".png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			
             //Check Add New Cluster Page
             WebElement s_menu_addcluster = driver.findElement(By.xpath("//*[contains(text(), 'Add Cluster')]"));
             s_menu_addcluster.click();
@@ -201,6 +225,14 @@ public class testLoginTest {
 			
 			if (!driver.getPageSource().contains("Add New Cluster"))
 				driver.close();
+			
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File("Login Test - vaild - Add Cluster"+timestamp+".png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			
 			// Cnode
             WebElement m_menu_cnode = driver.findElement(By.xpath("//*[contains(text(), 'Cnode')]"));
@@ -215,6 +247,14 @@ public class testLoginTest {
 			if (!driver.getPageSource().contains("Cnode List"))
 				driver.close();
 			
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File("Login Test - vaild - Cnode List"+timestamp+".png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			
             //Check Add New Cnode Page
             WebElement s_menu_addcnode = driver.findElement(By.xpath("//*[contains(text(), 'Add Cnode')]"));
             s_menu_addcnode.click();
@@ -222,6 +262,14 @@ public class testLoginTest {
 			
 			if (!driver.getPageSource().contains("Add New Cnode"))
 				driver.close();
+			
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File("Login Test - vaild - Add Cnode"+timestamp+".png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			
 			// Subnet
             WebElement m_menu_subnet = driver.findElement(By.xpath("//*[contains(text(), 'Subnet')]"));
@@ -236,6 +284,14 @@ public class testLoginTest {
 			if (!driver.getPageSource().contains("Subnet List"))
 				driver.close();
 			
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File("Login Test - vaild - Subnet List"+timestamp+".png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			
             //Check Add New Subnet Page
             WebElement s_menu_addsubnet = driver.findElement(By.xpath("//*[contains(text(), 'Add Subnet')]"));
             s_menu_addsubnet.click();
@@ -243,6 +299,14 @@ public class testLoginTest {
 			
 			if (!driver.getPageSource().contains("Add New Subnet"))
 				driver.close();
+			
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File("Login Test - vaild - Add Subnet"+timestamp+".png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			
 			// User
             WebElement m_menu_user = driver.findElement(By.xpath("//*[contains(text(), 'User')]"));
@@ -256,6 +320,14 @@ public class testLoginTest {
 			
 			if (!driver.getPageSource().contains("Edit Yout Profile"))
 				driver.close();
+			
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File("Login Test - vaild - Your Profile"+timestamp+".png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			
 			} catch (Error e) {
 	            verificationErrors.append(e.toString());
