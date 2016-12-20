@@ -40,7 +40,7 @@ public class testLoginTest {
 	    
 	}
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testInvaildUserTest() throws InterruptedException {
 		System.out.println("*** Invalid UserID ***");
 		driver.navigate().to(appURL);
@@ -75,7 +75,7 @@ public class testLoginTest {
             verificationErrors.append(e.toString());
 		}
 	}
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void testInvaildPasswordTest() throws InterruptedException {
 		System.out.println("*** Invalid Password ***");
 		driver.navigate().to(appURL);
@@ -133,19 +133,19 @@ public class testLoginTest {
 			Thread.sleep(1000);
 			
 			login.submit();
-			Thread.sleep(1000);
+			Thread.sleep(10000);
 			
             WebElement m_menu_service = driver.findElement(By.xpath("//*[contains(text(), 'Service')]"));
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			wait.until(ExpectedConditions.visibilityOf(m_menu_service));
 			
             m_menu_service.click();
-			Thread.sleep(1000);
+			Thread.sleep(5000);
 			
             //Check Service List Page
             WebElement s_menu_serviceList = driver.findElement(By.xpath("//*[contains(text(), 'Service List')]"));
             s_menu_serviceList.click();
-			Thread.sleep(1000);
+			Thread.sleep(5000);
 			
 			if (!driver.getPageSource().contains("Athene Chaining Services"))
 				driver.close();
@@ -153,46 +153,85 @@ public class testLoginTest {
             //Check Add New Page
             WebElement s_menu_addnew = driver.findElement(By.xpath("//*[contains(text(), 'Add New')]"));
             s_menu_addnew.click();
-			Thread.sleep(1000);     
+			Thread.sleep(5000);
 			
 			if (!driver.getPageSource().contains("New Network Service"))
 				driver.close();
 			
-			// Object
-            WebElement m_menu_object = driver.findElement(By.xpath("//*[contains(text(), 'Object')]"));
-            m_menu_object.click();
-			Thread.sleep(1000);
+			// Cluster
+            WebElement m_menu_cluster = driver.findElement(By.xpath("//*[contains(text(), 'Cluster')]"));
+            m_menu_cluster.click();
+			Thread.sleep(5000);
 			
-            //Check Node Page
-            WebElement s_menu_node = driver.findElement(By.xpath("//*[contains(text(), 'Node')]"));
-            s_menu_node.click();
-			Thread.sleep(1000);
+            //Check Cluster List Page
+            WebElement s_menu_clusterList = driver.findElement(By.xpath("//*[contains(text(), 'Cluster List')]"));
+            s_menu_clusterList.click();
+			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Athene NODE Setting"))
+			if (!driver.getPageSource().contains("Cluster List"))
 				driver.close();
 			
-            //Check Network Page
-            WebElement s_menu_network = driver.findElement(By.xpath("//*[contains(text(), 'Network')]"));
-            s_menu_network.click();
-			Thread.sleep(1000);
+            //Check Add New Cluster Page
+            WebElement s_menu_addcluster = driver.findElement(By.xpath("//*[contains(text(), 'Add Cluster')]"));
+            s_menu_addcluster.click();
+			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Athene NETWORK Setting"))
+			if (!driver.getPageSource().contains("Add New Cluster"))
 				driver.close();
 			
-            //Check Range Page
-            WebElement s_menu_range = driver.findElement(By.xpath("//*[contains(text(), 'Range')]"));
-            s_menu_range.click();
-			Thread.sleep(1000);
+			// Cnode
+            WebElement m_menu_cnode = driver.findElement(By.xpath("//*[contains(text(), 'Cnode')]"));
+            m_menu_cnode.click();
+			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Athene RANGE Setting"))
+            //Check Cnode List Page
+            WebElement s_menu_cnodeList = driver.findElement(By.xpath("//*[contains(text(), 'Cnode List')]"));
+            s_menu_cnodeList.click();
+			Thread.sleep(5000);
+			
+			if (!driver.getPageSource().contains("Cnode List"))
 				driver.close();
 			
-	        //Check Group Page
-            WebElement s_menu_group = driver.findElement(By.xpath("//*[contains(text(), 'Group')]"));
-            s_menu_group.click();
-			Thread.sleep(1000);
+            //Check Add New Cnode Page
+            WebElement s_menu_addcnode = driver.findElement(By.xpath("//*[contains(text(), 'Add Cnode')]"));
+            s_menu_addcnode.click();
+			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Athene GROUP Setting"))
+			if (!driver.getPageSource().contains("Add New Cnode"))
+				driver.close();
+			
+			// Subnet
+            WebElement m_menu_subnet = driver.findElement(By.xpath("//*[contains(text(), 'Subnet')]"));
+            m_menu_subnet.click();
+			Thread.sleep(5000);
+			
+            //Check Subnet List Page
+            WebElement s_menu_subnetList = driver.findElement(By.xpath("//*[contains(text(), 'Subnet List')]"));
+            s_menu_subnetList.click();
+			Thread.sleep(5000);
+			
+			if (!driver.getPageSource().contains("Subnet List"))
+				driver.close();
+			
+            //Check Add New Subnet Page
+            WebElement s_menu_addsubnet = driver.findElement(By.xpath("//*[contains(text(), 'Add Subnet')]"));
+            s_menu_addsubnet.click();
+			Thread.sleep(5000);
+			
+			if (!driver.getPageSource().contains("Add New Subnet"))
+				driver.close();
+			
+			// User
+            WebElement m_menu_user = driver.findElement(By.xpath("//*[contains(text(), 'User')]"));
+            m_menu_user.click();
+			Thread.sleep(5000);
+			
+            //Check Your Profile Page
+            WebElement s_menu_yourprofile = driver.findElement(By.xpath("//*[contains(text(), 'Your Profile')]"));
+            s_menu_yourprofile.click();
+			Thread.sleep(5000);
+			
+			if (!driver.getPageSource().contains("Edit Yout Profile"))
 				driver.close();
 			
 			} catch (Error e) {
