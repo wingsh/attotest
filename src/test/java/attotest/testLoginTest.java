@@ -47,7 +47,7 @@ public class testLoginTest {
 	    
 	}
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void testInvaildUserTest() throws InterruptedException {
 		System.out.println("*** Invalid UserID ***");
 		driver.navigate().to(appURL);
@@ -79,7 +79,7 @@ public class testLoginTest {
 			// Capture
 			try {
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				FileUtils.copyFile(scrFile, new File(timestamp+".png"));
+				FileUtils.copyFile(scrFile, new File("Login Test - invaild user"+timestamp+".png"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -90,7 +90,7 @@ public class testLoginTest {
             verificationErrors.append(e.toString());
 		}
 	}
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void testInvaildPasswordTest() throws InterruptedException {
 		System.out.println("*** Invalid Password ***");
 		driver.navigate().to(appURL);
@@ -122,7 +122,7 @@ public class testLoginTest {
 			// Capture
 			try {
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				FileUtils.copyFile(scrFile, new File(timestamp+".png"));
+				FileUtils.copyFile(scrFile, new File("Login Test - invaild password"+timestamp+".png"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
