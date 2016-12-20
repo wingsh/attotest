@@ -318,7 +318,7 @@ public class testLoginTest {
             s_menu_yourprofile.click();
 			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Edit Yout Profile"))
+			if (!driver.getPageSource().contains("Edit Your Profile"))
 				driver.close();
 	
 			// Capture
