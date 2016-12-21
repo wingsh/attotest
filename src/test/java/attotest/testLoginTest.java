@@ -27,7 +27,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class testLoginTest {
+public class testLoginTest extends variable{
 	
 	public RemoteWebDriver driver;
 	public static String appURL = "http://10.61.129.81:8009";
@@ -47,9 +47,50 @@ public class testLoginTest {
 	    String loginWindow = driver.getWindowHandle();
 	    driver.switchTo().window(loginWindow);  
 	    
+		System.out.println("***** Starting Login Test Case *****");
+	    
+	}
+	@Test(enabled = true, priority = 1)
+	public void testNullInputTest() throws InterruptedException {
+		System.out.println("*** Null Input ***");
+		driver.navigate().to(appURL);
+		String strPageTitle = driver.getTitle();
+
+		AssertJUnit.assertTrue(strPageTitle.equalsIgnoreCase("Athene Login"));
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+		try {
+			// find element user name & password & submit			
+			WebElement username = driver.findElement(By.name("userid"));
+			WebElement passwd = driver.findElement(By.name("pw"));
+			WebElement login = driver.findElement(By.id("submit"));
+			
+			login.submit();
+			Thread.sleep(3000);
+			
+			WebElement loginError = driver.findElement(By.className("ng-binding"));
+			String loginErrormsg = loginError.getAttribute("innerHTML");
+			System.out.println(loginErrormsg);
+			
+			assertEquals(loginErrormsg, invaildNullInputErrMsg);
+			
+			// Capture
+			try {
+				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-null input.png"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			username.clear();
+			passwd.clear();
+		} catch (Error e) {
+            verificationErrors.append(e.toString());
+		}
 	}
 	
-	@Test(enabled = true)
+	
+	@Test(enabled = true, priority = 2)
 	public void testInvaildUserTest() throws InterruptedException {
 		System.out.println("*** Invalid UserID ***");
 		driver.navigate().to(appURL);
@@ -76,7 +117,7 @@ public class testLoginTest {
 			String loginErrormsg = loginError.getAttribute("innerHTML");
 			System.out.println(loginErrormsg);
 			
-			assertEquals(loginErrormsg, "invalid password or id");
+			assertEquals(loginErrormsg, invalidUserErrMsg);
 			
 			// Capture
 			try {
@@ -92,7 +133,7 @@ public class testLoginTest {
             verificationErrors.append(e.toString());
 		}
 	}
-	@Test(enabled = true)
+	@Test(enabled = true, priority = 3)
 	public void testInvaildPasswordTest() throws InterruptedException {
 		System.out.println("*** Invalid Password ***");
 		driver.navigate().to(appURL);
@@ -119,7 +160,7 @@ public class testLoginTest {
 			String loginErrormsg = loginError.getAttribute("innerHTML");
 			System.out.println(loginErrormsg);
 						
-			assertEquals(loginErrormsg, "invalid password or id");
+			assertEquals(loginErrormsg, invaldPasswordErrMsg);
 			
 			// Capture
 			try {
@@ -137,7 +178,7 @@ public class testLoginTest {
 		}
 	}
 	
-	@Test(enabled = true)
+	@Test(enabled = true, priority = 4)
 	public void testValidLoginTest() throws InterruptedException {
 		System.out.println("*** Valid UserID & Password ***");
 		driver.navigate().to(appURL);
@@ -329,12 +370,9 @@ public class testLoginTest {
 					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_Your Profile.png"));
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				}			
 			
-			
-			Thread.sleep(5000);
-			System.out.println("Finished Login Test Case");
-		
+			Thread.sleep(5000);		
 			
 			} catch (Error e) {
 	            verificationErrors.append(e.toString());
@@ -343,12 +381,13 @@ public class testLoginTest {
 	
 	@AfterTest
 	public void tearDown() throws Exception {
-		 driver.quit();       
-		 String verificationErrorString = verificationErrors.toString();
-		 if (!"".equals(verificationErrorString)) {
-			 fail(verificationErrorString);
-		 }
-	 }
+		System.out.println("***** Finished Login Test Case *****");
+		driver.quit();   
+		String verificationErrorString = verificationErrors.toString();
+		if (!"".equals(verificationErrorString)) {
+			fail(verificationErrorString);
+		}
+	}
 }
 	
 
