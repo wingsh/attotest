@@ -72,7 +72,7 @@ public class testLoginTest extends variable{
 			String loginErrormsg = loginError.getAttribute("innerHTML");
 			System.out.println(loginErrormsg);
 			
-			assertEquals(loginErrormsg, invaildNullInputErrMsg);
+			assertEquals(loginErrormsg, NullInputErrMsg);
 			
 			// Capture
 			try {
@@ -160,7 +160,7 @@ public class testLoginTest extends variable{
 			String loginErrormsg = loginError.getAttribute("innerHTML");
 			System.out.println(loginErrormsg);
 						
-			assertEquals(loginErrormsg, invaldPasswordErrMsg);
+			assertEquals(loginErrormsg, invalidPasswordErrMsg);
 			
 			// Capture
 			try {
@@ -372,7 +372,25 @@ public class testLoginTest extends variable{
 					e.printStackTrace();
 				}			
 			
-			Thread.sleep(5000);		
+			Thread.sleep(5000);	
+			
+		    WebElement profile = driver.findElement(By.xpath("//i[@class='fa fa fa-user-secret']"));
+		    profile.click();
+			Thread.sleep(1000);	
+
+		    WebElement logout = driver.findElement(By.xpath("//i[@class='fa fa-sign-out']"));
+		    logout.click();	    
+		    
+		    // Capture
+		 	try {
+		 		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		 		FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Logout.png"));
+		 	} catch (Exception e) {
+		 		e.printStackTrace();
+		 	}	
+		 	
+			Thread.sleep(5000);	
+			
 			
 			} catch (Error e) {
 	            verificationErrors.append(e.toString());
