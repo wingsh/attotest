@@ -51,7 +51,7 @@ public class testServiceTest extends variable{
 	    
 	}
 	
-	@Test(enabled = true, priority = 4)
+	@Test(enabled = true, priority = 5)
 	public void testValidLoginTest() throws InterruptedException {
 		System.out.println("*** Not Choose Cluster ***");
 		driver.navigate().to(appURL);

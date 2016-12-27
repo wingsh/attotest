@@ -36,7 +36,6 @@ public class testLoginTest extends variable{
 	private static final String CAPTURE_PATH = "test-output/";
 
 
-	
 	@BeforeTest
 	public void setUp() throws MalformedURLException {
 		System.setProperty("webdriver.chrome.driver", "chromedriver");

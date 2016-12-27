@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite"> 
-  <test name="Login Test - Not Input UserID & Password">
-    <classes>
-      <class name="attotest.testNullInputTest"/>
-    </classes>
-  </test>
-  <test name="Login Test - Invaild UserID Test">
-    <classes>
-      <class name="attotest.testInvaildUserTest"/>
-    </classes>
-  </test>
-  <test name="Login Test - Invaild Password Test">
-    <classes>
-      <class name="attotest.testInvaildPasswordTest"/>
-    </classes>
-  </test> 
-  <test name="Login Test - Valid Test">
+<suite name="AtheneTest" verbose="1"> 
+  <test name="Login Test" parallel="false" preserve-order="true">
     <classes>
       <class name="attotest.testLoginTest"/>
     </classes>
   </test>
+  <test name="Service Test ">
+    <classes>
+      <class name="attotest.testServiceTest"/>
+    </classes>
+   </test>   
 </suite>
