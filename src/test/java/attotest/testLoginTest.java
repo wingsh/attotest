@@ -373,6 +373,7 @@ public class testLoginTest extends variable{
 			
 			Thread.sleep(5000);	
 			
+			System.out.println("*** Logout ***");
 		    WebElement profile = driver.findElement(By.xpath("//i[@class='fa fa fa-user-secret']"));
 		    profile.click();
 			Thread.sleep(1000);	
