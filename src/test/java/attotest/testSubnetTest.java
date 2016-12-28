@@ -85,9 +85,16 @@ public class testSubnetTest extends variable{
 			if (!driver.getPageSource().contains("Subnet List"))
 				driver.close();
 			
+			
+            WebElement btn_subnetlist_add = driver.findElement(By.xpath("//i[@class='fa fa-plus fa-fw']"));
+            btn_subnetlist_add.click();
+            
+            /*
             //Check Add New Subnet Page
             WebElement s_menu_addsubnet = driver.findElement(By.xpath("//*[contains(text(), 'Add Subnet')]"));
             s_menu_addsubnet.click();
+			*/
+            
 			Thread.sleep(5000);
 			
 			if (!driver.getPageSource().contains("Add New Subnet"))

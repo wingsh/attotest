@@ -85,11 +85,16 @@ public class testCnodeTest extends variable{
 			if (!driver.getPageSource().contains("Cnode List"))
 				driver.close();
 			
+            WebElement btn_cnodelist_add = driver.findElement(By.xpath("//i[@class='fa fa-plus fa-fw']"));
+            btn_cnodelist_add.click();
+			
+			/*
             //Check Add New Cnode Page
             WebElement s_menu_addcnode = driver.findElement(By.xpath("//*[contains(text(), 'Add Cnode')]"));
             s_menu_addcnode.click();
+			*/			
 			Thread.sleep(5000);
-			
+						
 			if (!driver.getPageSource().contains("Add New Cnode"))
 				driver.close();		
 			
