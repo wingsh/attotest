@@ -50,7 +50,7 @@ public class testClusterTest extends variable{
 	    
 	}
 	
-	@Test(enabled = false, priority = 1)
+	@Test(enabled = true, priority = 1)
 	public void testNullInputTest() throws InterruptedException {
 		System.out.println("*** No Input Cluster ***");
 		driver.navigate().to(appURL);
