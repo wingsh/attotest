@@ -24,6 +24,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class testClusterTest extends variable{
 	
@@ -49,7 +50,7 @@ public class testClusterTest extends variable{
 	    
 	}
 	
-	@Test(enabled = true, priority = 1)
+	@Test(enabled = false, priority = 1)
 	public void testNullInputTest() throws InterruptedException {
 		System.out.println("*** No Input Cluster ***");
 		driver.navigate().to(appURL);
@@ -105,6 +106,74 @@ public class testClusterTest extends variable{
 			try {
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Cluster-No Input Cluster.png"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	 	
+			Thread.sleep(5000);			
+			
+			} catch (Error e) {
+	            verificationErrors.append(e.toString());
+		}
+	}
+	
+	@Test(enabled = true, priority = 2)
+	public void testMaxNameTest() throws InterruptedException {
+		System.out.println("*** No Input Cluster ***");
+		driver.navigate().to(appURL);
+		String strPageTitle = driver.getTitle();
+
+		AssertJUnit.assertTrue(strPageTitle.equalsIgnoreCase("Athene Login"));
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+		try {
+			// find element user name & password & submit			
+			WebElement username = driver.findElement(By.name("userid"));
+			WebElement passwd = driver.findElement(By.name("pw"));
+			WebElement login = driver.findElement(By.id("submit"));
+			
+			username.sendKeys("athene");
+			Thread.sleep(1000);
+			passwd.sendKeys("athene");
+			Thread.sleep(1000);
+			
+			login.submit();
+			Thread.sleep(10000);
+			
+			// Cluster
+            WebElement m_menu_cluster = driver.findElement(By.xpath("//*[contains(text(), 'Cluster')]"));
+            m_menu_cluster.click();
+			Thread.sleep(5000);
+			
+            //Check Add New Cluster Page
+            WebElement s_menu_addcluster = driver.findElement(By.xpath("//*[contains(text(), 'Add Cluster')]"));
+            s_menu_addcluster.click();
+			Thread.sleep(5000);
+			
+			if (!driver.getPageSource().contains("Add New Cluster"))
+				driver.close();
+			
+		    WebElement text_cluster_name = driver.findElement(By.name("clusterName"));
+		    text_cluster_name.sendKeys("autotest");
+
+		    //WebElement text_cluster_type = driver.findElement(By.name("clusterType"));
+		    Select text_cluster_type = new Select(driver.findElementByName("clusterType"));
+		    //text_cluster_type.click();
+			Thread.sleep(5000);	
+			text_cluster_type.selectByVisibleText("L3");
+			
+		    WebElement btn_publish = driver.findElement(By.xpath("//input[@class='isul-save-button']"));
+		    btn_publish.click();
+			
+			Thread.sleep(5000);	
+			
+			if (!driver.getPageSource().contains("Edit Cluster"))
+				driver.close();
+			
+			// Capture
+			try {
+				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Cluster-Success Create a Cluster.png"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
