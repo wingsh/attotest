@@ -24,10 +24,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class testServiceTest extends variable{
+public class testSubnetTest extends variable{
 	
 	public RemoteWebDriver driver;
 	public static String appURL = "http://10.61.129.81:8009";
@@ -47,13 +45,13 @@ public class testServiceTest extends variable{
 	    String loginWindow = driver.getWindowHandle();
 	    driver.switchTo().window(loginWindow);  
 	    
-		System.out.println("***** Starting Service Test Case *****");
+		System.out.println("***** Starting Subnet Test Case *****");
 	    
 	}
 	
 	@Test(enabled = true, priority = 1)
 	public void testValidLoginTest() throws InterruptedException {
-		System.out.println("*** No Input Service ***");
+		System.out.println("*** No Input Subnet ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
 
@@ -74,40 +72,54 @@ public class testServiceTest extends variable{
 			login.submit();
 			Thread.sleep(10000);
 			
-            WebElement m_menu_service = driver.findElement(By.xpath("//*[contains(text(), 'Service')]"));
-			WebDriverWait wait = new WebDriverWait(driver, 10);
-			wait.until(ExpectedConditions.visibilityOf(m_menu_service));
-			
-            m_menu_service.click();
+			// Subnet
+            WebElement m_menu_subnet = driver.findElement(By.xpath("//*[contains(text(), 'Subnet')]"));
+            m_menu_subnet.click();
 			Thread.sleep(5000);
 			
-            //Check Service List Page
-            WebElement s_menu_serviceList = driver.findElement(By.xpath("//*[contains(text(), 'Service List')]"));
-            s_menu_serviceList.click();
+            //Check Subnet List Page
+            WebElement s_menu_subnetList = driver.findElement(By.xpath("//*[contains(text(), 'Subnet List')]"));
+            s_menu_subnetList.click();
 			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Athene Chaining Services"))
+			if (!driver.getPageSource().contains("Subnet List"))
 				driver.close();
-            
-            //Check Add New Page
-            WebElement s_menu_addnew = driver.findElement(By.xpath("//*[contains(text(), 'Add New')]"));
-            s_menu_addnew.click();
+			
+            //Check Add New Subnet Page
+            WebElement s_menu_addsubnet = driver.findElement(By.xpath("//*[contains(text(), 'Add Subnet')]"));
+            s_menu_addsubnet.click();
 			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("New Network Service"))
+			if (!driver.getPageSource().contains("Add New Subnet"))
 				driver.close();
-
-		    WebElement btn_save = driver.findElement(By.xpath("//i[@class='fa fa-save']"));
-			btn_save.click();
 			
-		    WebElement nochoosecluster = driver.findElement(By.xpath("//div[@class='isul-notify-panel ng-binding']"));
-		    String Errmsg_nochoosecluster = nochoosecluster.getText();
-			assertEquals(Errmsg_nochoosecluster, ServiceNoInputErrMsg);
 			
+		    WebElement btn_addsubnet = driver.findElement(By.xpath("//input[@class='isul-edit-button']"));
+		    btn_addsubnet.click();
+		    
+		    // Name Error Message
+		    WebElement noNetworkaddresssubnet = driver.findElement(By.xpath("//form//div//label[3]//span[@class='form-error']"));
+		    String Errmsg_noNetworkaddresssubnet = noNetworkaddresssubnet.getText();
+			System.out.println("No Input + Add Subnet - Network Address Error Message is : " + Errmsg_noNetworkaddresssubnet);
+		    
+			//ip Error Message    
+		    WebElement noMasksubnet = driver.findElement(By.xpath("//form//div//label[4]//span[@class='form-error']"));
+		    String Errmsg_noMasksubnet = noMasksubnet.getText();
+			System.out.println("No Input + Add Subnet - Mask Error Message is : " + Errmsg_noMasksubnet);
+			
+			// Hostname Error Message
+			WebElement novLansubnet = driver.findElement(By.xpath("//form//div//label[6]//span[@class='form-error']"));
+		    String Errmsg_novLansubnet = novLansubnet.getText();
+			System.out.println("No Input + Add Subnet - vLan Error Message is : " + Errmsg_novLansubnet);
+					    
+		    assertEquals(Errmsg_noNetworkaddresssubnet, SubnetNullNetworkAddressErrMsg);
+		    assertEquals(Errmsg_noMasksubnet, SubnetNullMaskErrMsg);
+		    assertEquals(Errmsg_novLansubnet, SubnetNullvLanErrMsg);
+		    
 			// Capture
 			try {
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Service-No Choose Cluster.png"));
+				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Subnet-No Input Subnet.png"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -122,7 +134,7 @@ public class testServiceTest extends variable{
 	
 	@AfterTest
 	public void tearDown() throws Exception {
-		System.out.println("***** Finished Service Test Case *****");
+		System.out.println("***** Finished Subnet Test Case *****");
 		driver.quit();   
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {

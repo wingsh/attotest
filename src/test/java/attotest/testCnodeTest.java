@@ -24,10 +24,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class testServiceTest extends variable{
+public class testCnodeTest extends variable{
 	
 	public RemoteWebDriver driver;
 	public static String appURL = "http://10.61.129.81:8009";
@@ -47,13 +45,13 @@ public class testServiceTest extends variable{
 	    String loginWindow = driver.getWindowHandle();
 	    driver.switchTo().window(loginWindow);  
 	    
-		System.out.println("***** Starting Service Test Case *****");
+		System.out.println("***** Starting Cnode Test Case *****");
 	    
 	}
 	
 	@Test(enabled = true, priority = 1)
 	public void testValidLoginTest() throws InterruptedException {
-		System.out.println("*** No Input Service ***");
+		System.out.println("*** Not Input Cnode ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
 
@@ -74,40 +72,53 @@ public class testServiceTest extends variable{
 			login.submit();
 			Thread.sleep(10000);
 			
-            WebElement m_menu_service = driver.findElement(By.xpath("//*[contains(text(), 'Service')]"));
-			WebDriverWait wait = new WebDriverWait(driver, 10);
-			wait.until(ExpectedConditions.visibilityOf(m_menu_service));
-			
-            m_menu_service.click();
+			// Cnode
+            WebElement m_menu_cnode = driver.findElement(By.xpath("//*[contains(text(), 'Cnode')]"));
+            m_menu_cnode.click();
 			Thread.sleep(5000);
 			
-            //Check Service List Page
-            WebElement s_menu_serviceList = driver.findElement(By.xpath("//*[contains(text(), 'Service List')]"));
-            s_menu_serviceList.click();
+            //Check Cnode List Page
+            WebElement s_menu_cnodeList = driver.findElement(By.xpath("//*[contains(text(), 'Cnode List')]"));
+            s_menu_cnodeList.click();
 			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Athene Chaining Services"))
+			if (!driver.getPageSource().contains("Cnode List"))
 				driver.close();
-            
-            //Check Add New Page
-            WebElement s_menu_addnew = driver.findElement(By.xpath("//*[contains(text(), 'Add New')]"));
-            s_menu_addnew.click();
+			
+            //Check Add New Cnode Page
+            WebElement s_menu_addcnode = driver.findElement(By.xpath("//*[contains(text(), 'Add Cnode')]"));
+            s_menu_addcnode.click();
 			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("New Network Service"))
-				driver.close();
-
-		    WebElement btn_save = driver.findElement(By.xpath("//i[@class='fa fa-save']"));
-			btn_save.click();
+			if (!driver.getPageSource().contains("Add New Cnode"))
+				driver.close();		
 			
-		    WebElement nochoosecluster = driver.findElement(By.xpath("//div[@class='isul-notify-panel ng-binding']"));
-		    String Errmsg_nochoosecluster = nochoosecluster.getText();
-			assertEquals(Errmsg_nochoosecluster, ServiceNoInputErrMsg);
+		    WebElement btn_addcnode = driver.findElement(By.xpath("//input[@class='isul-edit-button']"));
+		    btn_addcnode.click();
+		    
+		    // Name Error Message
+		    WebElement nonamecnode = driver.findElement(By.xpath("//form//div//label[1]//span[@class='error']"));
+		    String Errmsg_nonamecnode = nonamecnode.getText();
+			System.out.println("No Input + Add Cnode - Name Error Message is : " + Errmsg_nonamecnode);
+		    
+			//ip Error Message    
+		    WebElement noipcnode = driver.findElement(By.xpath("//form//div//label[2]//span[@class='error']"));
+		    String Errmsg_noipcnode = noipcnode.getText();
+			System.out.println("No Input + Add Cnode - ip Error Message is : " + Errmsg_noipcnode);
 			
+			// Hostname Error Message
+			WebElement nohostnamecnode = driver.findElement(By.xpath("//form//div//label[4]//span[@class='error']"));
+		    String Errmsg_nohostnamecnode = nohostnamecnode.getText();
+			System.out.println("No Input + Add Cnode - Hostname Error Message is : " + Errmsg_nohostnamecnode);
+					    
+		    assertEquals(Errmsg_nonamecnode, CnodeNullNameErrMsg);
+		    assertEquals(Errmsg_noipcnode, CnodeNullipErrMsg);
+		    assertEquals(Errmsg_nohostnamecnode, CnodeNullHostnameErrMsg);
+		    
 			// Capture
 			try {
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Service-No Choose Cluster.png"));
+				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Cnode-No Input Cnode.png"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -122,7 +133,7 @@ public class testServiceTest extends variable{
 	
 	@AfterTest
 	public void tearDown() throws Exception {
-		System.out.println("***** Finished Service Test Case *****");
+		System.out.println("***** Finished Cnode Test Case *****");
 		driver.quit();   
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {

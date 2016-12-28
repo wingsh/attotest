@@ -3,24 +3,32 @@ package attotest;
 public class variable {
 	// ** Login Case **
 	// NULL UserID & Password 
-	String NullInputErrMsg = "Input your id or password";
+	String LoginNoInputErrMsg = "Input your id or password";
 	// Invaild UserID
-	String invalidUserErrMsg = "invalid password or id";
+	String LoginInvalidUserErrMsg = "invalid password or id";
 	// Invaild Password
-	String invalidPasswordErrMsg = "invalid password or id";
+	String LoginInvalidPasswordErrMsg = "invalid password or id";
 	
 	// ** Service **
-	String nullClusterErrMsg = "Cluster를 선택하세요.";
-	String maxServiceTitleErrMsg = "사용 가능한 글자 수를 초과 하였습니다.";
-	String maxServiceDescriptionErrMsg = "사용 가능한 글자 수를 초과 하였습니다.";
+	String ServiceNoInputErrMsg = "Cluster를 선택하세요.";
+	String ServicemaxTitleErrMsg = "사용 가능한 글자 수를 초과 하였습니다.";
+	String ServiceMaxDescriptionErrMsg = "사용 가능한 글자 수를 초과 하였습니다.";
 
 	// ** Cluster **
-	String maxClusterNameErrMsg = "Internal server error";
-	String maxClusterDescriptionErrMsg = "Internal server error";
+	String ClusterNoInputErrMsg = "This value is required.";
+
+	String ClusterMaxNameErrMsg = "Internal server error";
+	String ClusterMaxDescriptionErrMsg = "Internal server error";
 	
 	// ** Cnode **
+	String CnodeNullNameErrMsg = "This value is required.";
+	String CnodeNullipErrMsg = "This value is required.";
+	String CnodeNullHostnameErrMsg = "This value is required.";
 	
 	// ** Subnet **
+	String SubnetNullNetworkAddressErrMsg = "This value is required.";
+	String SubnetNullMaskErrMsg = "This value is required.";
+	String SubnetNullvLanErrMsg = "This value is required.";
 	
 	// Network Address
 	// NULL Network Address
@@ -32,7 +40,7 @@ public class variable {
 	// Invaild Network Address - Range (ex.256)
 	String invaildRangeNetworkAddressErrMsg = "Please enter a valid ip address.";
 	
-	// Network Mask
+	// Mask
 	// NULL Mask
 	String nullMaskErrMsg = "This value is required.";
 	// Invaild Mask - Character
@@ -41,7 +49,7 @@ public class variable {
 //	String invaildRangeMaskErrMsg = "Please enter a valid mask.";
 
 
-	// Gateway Address
+	// Gateway
 	// Invaild Gateway - Character
 	String charGatewayErrMsg = "Please enter a valid IP address.";
 	// Invaild Gateway - Special Character
@@ -49,7 +57,7 @@ public class variable {
 	// Invaild Gateway - Range (ex.256)
 	String invaildRangeGatewayErrMsg = "Please enter a valid IP address.";
 
-	// vLan Mask
+	// vLan
 	// NULL vLan
 	String nullvLanErrMsg = "This value is required.";
 	// Invaild vLan - Character

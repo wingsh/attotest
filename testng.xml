@@ -10,5 +10,20 @@
     <classes>
       <class name="attotest.testServiceTest"/>
     </classes>
-   </test>   
+  </test>   
+  <test name="Cluster Test ">
+    <classes>
+      <class name="attotest.testClusterTest"/>
+    </classes>
+  </test>
+  <test name="Cnode Test ">
+    <classes>
+      <class name="attotest.testCnodeTest"/>
+    </classes>
+  </test>   
+  <test name="Subnet Test ">
+    <classes>
+      <class name="attotest.testSubnetTest"/>
+  </classes>
+  </test>      
 </suite>

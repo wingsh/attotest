@@ -24,10 +24,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class testServiceTest extends variable{
+public class testClusterTest extends variable{
 	
 	public RemoteWebDriver driver;
 	public static String appURL = "http://10.61.129.81:8009";
@@ -47,13 +45,13 @@ public class testServiceTest extends variable{
 	    String loginWindow = driver.getWindowHandle();
 	    driver.switchTo().window(loginWindow);  
 	    
-		System.out.println("***** Starting Service Test Case *****");
+		System.out.println("***** Starting Cluster Test Case *****");
 	    
 	}
 	
 	@Test(enabled = true, priority = 1)
-	public void testValidLoginTest() throws InterruptedException {
-		System.out.println("*** No Input Service ***");
+	public void testNullInputTest() throws InterruptedException {
+		System.out.println("*** No Input Cluster ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
 
@@ -74,46 +72,44 @@ public class testServiceTest extends variable{
 			login.submit();
 			Thread.sleep(10000);
 			
-            WebElement m_menu_service = driver.findElement(By.xpath("//*[contains(text(), 'Service')]"));
-			WebDriverWait wait = new WebDriverWait(driver, 10);
-			wait.until(ExpectedConditions.visibilityOf(m_menu_service));
-			
-            m_menu_service.click();
+			// Cluster
+            WebElement m_menu_cluster = driver.findElement(By.xpath("//*[contains(text(), 'Cluster')]"));
+            m_menu_cluster.click();
 			Thread.sleep(5000);
 			
-            //Check Service List Page
-            WebElement s_menu_serviceList = driver.findElement(By.xpath("//*[contains(text(), 'Service List')]"));
-            s_menu_serviceList.click();
+            //Check Cluster List Page
+            WebElement s_menu_clusterList = driver.findElement(By.xpath("//*[contains(text(), 'Cluster List')]"));
+            s_menu_clusterList.click();
 			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Athene Chaining Services"))
+			if (!driver.getPageSource().contains("Cluster List"))
 				driver.close();
-            
-            //Check Add New Page
-            WebElement s_menu_addnew = driver.findElement(By.xpath("//*[contains(text(), 'Add New')]"));
-            s_menu_addnew.click();
+			
+            //Check Add New Cluster Page
+            WebElement s_menu_addcluster = driver.findElement(By.xpath("//*[contains(text(), 'Add Cluster')]"));
+            s_menu_addcluster.click();
 			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("New Network Service"))
+			if (!driver.getPageSource().contains("Add New Cluster"))
 				driver.close();
-
-		    WebElement btn_save = driver.findElement(By.xpath("//i[@class='fa fa-save']"));
-			btn_save.click();
 			
-		    WebElement nochoosecluster = driver.findElement(By.xpath("//div[@class='isul-notify-panel ng-binding']"));
-		    String Errmsg_nochoosecluster = nochoosecluster.getText();
-			assertEquals(Errmsg_nochoosecluster, ServiceNoInputErrMsg);
+		    WebElement btn_publish = driver.findElement(By.xpath("//input[@class='isul-save-button']"));
+		    btn_publish.click();
+			
+		    WebElement noinputcluster = driver.findElement(By.xpath("//span[@class='error ng-scope']"));
+		    String Errmsg_noinputcluster = noinputcluster.getText();
+		    System.out.println("No Input + Publish Error Message is : "+Errmsg_noinputcluster);
+			assertEquals(Errmsg_noinputcluster, ClusterNoInputErrMsg);
 			
 			// Capture
 			try {
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Service-No Choose Cluster.png"));
+				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Cluster-No Input Cluster.png"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 	 	
-			Thread.sleep(5000);	
-			
+			Thread.sleep(5000);			
 			
 			} catch (Error e) {
 	            verificationErrors.append(e.toString());
@@ -122,7 +118,7 @@ public class testServiceTest extends variable{
 	
 	@AfterTest
 	public void tearDown() throws Exception {
-		System.out.println("***** Finished Service Test Case *****");
+		System.out.println("***** Finished Cluster Test Case *****");
 		driver.quit();   
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {

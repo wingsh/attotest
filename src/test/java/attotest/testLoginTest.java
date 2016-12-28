@@ -71,7 +71,7 @@ public class testLoginTest extends variable{
 			String loginErrormsg = loginError.getAttribute("innerHTML");
 			System.out.println(loginErrormsg);
 			
-			assertEquals(loginErrormsg, NullInputErrMsg);
+			assertEquals(loginErrormsg, LoginNoInputErrMsg);
 			
 			// Capture
 			try {
@@ -116,7 +116,7 @@ public class testLoginTest extends variable{
 			String loginErrormsg = loginError.getAttribute("innerHTML");
 			System.out.println(loginErrormsg);
 			
-			assertEquals(loginErrormsg, invalidUserErrMsg);
+			assertEquals(loginErrormsg, LoginInvalidUserErrMsg);
 			
 			// Capture
 			try {
@@ -159,7 +159,7 @@ public class testLoginTest extends variable{
 			String loginErrormsg = loginError.getAttribute("innerHTML");
 			System.out.println(loginErrormsg);
 						
-			assertEquals(loginErrormsg, invalidPasswordErrMsg);
+			assertEquals(loginErrormsg, LoginInvalidPasswordErrMsg);
 			
 			// Capture
 			try {
