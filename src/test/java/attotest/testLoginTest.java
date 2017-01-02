@@ -206,7 +206,7 @@ public class testLoginTest extends variable{
 			if (!driver.getPageSource().contains("Athene Dashboard Main"))
 				driver.close();
 			
-			//Check Dashboard Main Page
+			// Check Dashboard Main Page
             WebElement s_menu_dashboardmain = driver.findElement(By.xpath("//a[@href='#/dashboard/box']"));
             s_menu_dashboardmain.click();
 			Thread.sleep(5000);
@@ -227,7 +227,7 @@ public class testLoginTest extends variable{
             m_menu_service.click();
 			Thread.sleep(5000);
 			
-            //Check Service List Page
+            // Check Service List Page
             WebElement s_menu_serviceList = driver.findElement(By.xpath("//a[@href='#/chaining/list']"));
             s_menu_serviceList.click();
 			Thread.sleep(5000);
@@ -243,7 +243,7 @@ public class testLoginTest extends variable{
 					e.printStackTrace();
 				}
             
-            //Check Add New Page
+            // Check Add New Page
             WebElement s_menu_addnew = driver.findElement(By.xpath("//a[@href='#/chaining/new']"));
             s_menu_addnew.click();
 			Thread.sleep(5000);
@@ -264,7 +264,7 @@ public class testLoginTest extends variable{
             m_menu_cluster.click();
 			Thread.sleep(5000);
 			
-            //Check Cluster List Page
+            // Check Cluster List Page
             WebElement s_menu_clusterList = driver.findElement(By.xpath("//a[@href='#/cluster/list']"));
             s_menu_clusterList.click();
 			Thread.sleep(5000);
@@ -280,7 +280,7 @@ public class testLoginTest extends variable{
 					e.printStackTrace();
 				}
 			
-            //Check Add New Cluster Page
+            // Check Add New Cluster Page
             WebElement s_menu_addcluster = driver.findElement(By.xpath("//a[@href='#/cluster/add']"));
             s_menu_addcluster.click();
 			Thread.sleep(5000);
@@ -301,7 +301,7 @@ public class testLoginTest extends variable{
             m_menu_cnode.click();
 			Thread.sleep(5000);
 			
-            //Check Cnode List Page
+            // Check Cnode List Page
             WebElement s_menu_cnodeList = driver.findElement(By.xpath("//a[@href='#/cnode/list']"));
             s_menu_cnodeList.click();
 			Thread.sleep(5000);
@@ -317,7 +317,7 @@ public class testLoginTest extends variable{
 					e.printStackTrace();
 				}
 			
-            //Check Add New Cnode Page
+            // Check Add New Cnode Page
             WebElement s_menu_addcnode = driver.findElement(By.xpath("//a[@href='#/cnode/add']"));
             s_menu_addcnode.click();
 			Thread.sleep(5000);
@@ -338,7 +338,7 @@ public class testLoginTest extends variable{
             m_menu_subnet.click();
 			Thread.sleep(5000);
 			
-            //Check Subnet List Page
+            // Check Subnet List Page
             WebElement s_menu_subnetList = driver.findElement(By.xpath("//a[@href='#/subnet/list']"));
             s_menu_subnetList.click();
 			Thread.sleep(5000);
@@ -354,7 +354,7 @@ public class testLoginTest extends variable{
 					e.printStackTrace();
 				}
 			
-            //Check Add New Subnet Page
+            // Check Add New Subnet Page
             WebElement s_menu_addsubnet = driver.findElement(By.xpath("//a[@href='#/subnet/add']"));
             s_menu_addsubnet.click();
 			Thread.sleep(5000);
@@ -375,7 +375,7 @@ public class testLoginTest extends variable{
             m_menu_user.click();
 			Thread.sleep(5000);
 			
-            //Check Your Profile Page
+            // Check Your Profile Page
             WebElement s_menu_yourprofile = driver.findElement(By.xpath("//a[@href='#/user/edit']"));
             s_menu_yourprofile.click();
 			Thread.sleep(5000);
@@ -396,7 +396,7 @@ public class testLoginTest extends variable{
             m_menu_noficiation.click();
 			Thread.sleep(5000);
 			
-            //Check Log Page
+            // Check Log Page
             WebElement s_menu_log = driver.findElement(By.xpath("//a[@href='#/notification/log']"));
             s_menu_log.click();
 			Thread.sleep(5000);
@@ -413,6 +413,20 @@ public class testLoginTest extends variable{
 				}			
 			
 			Thread.sleep(5000);	
+			
+            // Collapsed
+            WebElement icon_collapsed = driver.findElement(By.xpath("//i[@class='fa fa-chevron-circle-left']"));
+            icon_collapsed.click();
+			Thread.sleep(1000);
+			
+			// Capture
+			try {
+				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Collpased.png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}		
+			
 			
 			System.out.println("*** Logout ***");
 		    WebElement profile = driver.findElement(By.xpath("//i[@class='fa fa fa-user-secret']"));
