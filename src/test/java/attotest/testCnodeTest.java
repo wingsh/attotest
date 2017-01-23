@@ -28,7 +28,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class testCnodeTest extends variable{
 	
 	public RemoteWebDriver driver;
-	public static String appURL = "http://10.61.129.81:8009";
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	private StringBuffer verificationErrors = new StringBuffer();
 	private static final String CAPTURE_PATH = "test-output/";

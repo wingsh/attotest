@@ -26,10 +26,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+
+
 public class testClusterTest extends variable{
 	
 	public RemoteWebDriver driver;
-	public static String appURL = "http://10.61.129.81:8009";
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	private StringBuffer verificationErrors = new StringBuffer();
 	private static final String CAPTURE_PATH = "test-output/";
@@ -46,54 +47,39 @@ public class testClusterTest extends variable{
 	    String loginWindow = driver.getWindowHandle();
 	    driver.switchTo().window(loginWindow);  
 	    
+	    driver.navigate().to(appURL);
+		String strPageTitle = driver.getTitle();
+		
+		AssertJUnit.assertTrue(strPageTitle.equalsIgnoreCase("Athene Login"));
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+		WebElement username = driver.findElement(By.name("userid"));
+		WebElement passwd = driver.findElement(By.name("pw"));
+		WebElement login = driver.findElement(By.id("submit"));
+		
+		username.sendKeys("athene");
+		passwd.sendKeys("athene");
+		
+		login.submit();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 		System.out.println("***** Starting Cluster Test Case *****");
 	    
 	}
 	
-	@Test(enabled = true, priority = 1)
-	public void testNullInputTest() throws InterruptedException {
+	@Test(enabled = false, priority = 1)
+	public void testNullInput() throws InterruptedException {
 		System.out.println("*** No Input Cluster ***");
-		driver.navigate().to(appURL);
-		String strPageTitle = driver.getTitle();
-
-		AssertJUnit.assertTrue(strPageTitle.equalsIgnoreCase("Athene Login"));
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		
-		try {
-			// find element user name & password & submit			
-			WebElement username = driver.findElement(By.name("userid"));
-			WebElement passwd = driver.findElement(By.name("pw"));
-			WebElement login = driver.findElement(By.id("submit"));
+		try {	
 			
-			username.sendKeys("athene");
-			Thread.sleep(1000);
-			passwd.sendKeys("athene");
-			Thread.sleep(1000);
-			
-			login.submit();
-			Thread.sleep(10000);
-			
-			// Cluster
-            WebElement m_menu_cluster = driver.findElement(By.xpath("//*[contains(text(), 'Cluster')]"));
-            m_menu_cluster.click();
-			Thread.sleep(5000);
-			
-            //Check Cluster List Page
-            WebElement s_menu_clusterList = driver.findElement(By.xpath("//*[contains(text(), 'Cluster List')]"));
+            WebElement s_menu_clusterList = driver.findElement(By.xpath("//a[@href='#/cluster/list']"));
             s_menu_clusterList.click();
 			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Cluster List"))
-				driver.close();
-			
-            //Check Add New Cluster Page
-            WebElement s_menu_addcluster = driver.findElement(By.xpath("//*[contains(text(), 'Add Cluster')]"));
-            s_menu_addcluster.click();
-			Thread.sleep(5000);
-			
-			if (!driver.getPageSource().contains("Add New Cluster"))
-				driver.close();
-			
+            WebElement s_menu_addcluster = driver.findElement(By.xpath("//a[@href='#/cluster/add']"));
+	        s_menu_addcluster.click();
+			Thread.sleep(5000);			
+	        
 		    WebElement btn_publish = driver.findElement(By.xpath("//input[@class='isul-save-button']"));
 		    btn_publish.click();
 			
@@ -117,41 +103,19 @@ public class testClusterTest extends variable{
 		}
 	}
 	
-	@Test(enabled = true, priority = 2)
-	public void testMaxNameTest() throws InterruptedException {
-		System.out.println("*** No Input Cluster ***");
-		driver.navigate().to(appURL);
-		String strPageTitle = driver.getTitle();
-
-		AssertJUnit.assertTrue(strPageTitle.equalsIgnoreCase("Athene Login"));
-		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	@Test(enabled = false, priority = 2)
+	public void testCreateCluster() throws InterruptedException {
+		System.out.println("*** Create Cluster ***");
 		
 		try {
-			// find element user name & password & submit			
-			WebElement username = driver.findElement(By.name("userid"));
-			WebElement passwd = driver.findElement(By.name("pw"));
-			WebElement login = driver.findElement(By.id("submit"));
 			
-			username.sendKeys("athene");
-			Thread.sleep(1000);
-			passwd.sendKeys("athene");
-			Thread.sleep(1000);
-			
-			login.submit();
-			Thread.sleep(10000);
-			
-			// Cluster
-            WebElement m_menu_cluster = driver.findElement(By.xpath("//*[contains(text(), 'Cluster')]"));
-            m_menu_cluster.click();
+            WebElement s_menu_clusterList = driver.findElement(By.xpath("//a[@href='#/cluster/list']"));
+            s_menu_clusterList.click();
 			Thread.sleep(5000);
 			
-            //Check Add New Cluster Page
-            WebElement s_menu_addcluster = driver.findElement(By.xpath("//*[contains(text(), 'Add Cluster')]"));
-            s_menu_addcluster.click();
-			Thread.sleep(5000);
-			
-			if (!driver.getPageSource().contains("Add New Cluster"))
-				driver.close();
+            WebElement s_menu_addcluster = driver.findElement(By.xpath("//a[@href='#/cluster/add']"));
+	        s_menu_addcluster.click();
+			Thread.sleep(5000);		
 			
 		    WebElement text_cluster_name = driver.findElement(By.name("clusterName"));
 		    text_cluster_name.sendKeys("autotest");
@@ -179,6 +143,25 @@ public class testClusterTest extends variable{
 			}
 	 	
 			Thread.sleep(5000);			
+			
+			} catch (Error e) {
+	            verificationErrors.append(e.toString());
+		}
+	}
+	
+	@Test(enabled = true, priority = 2)
+	public void testDeleteCluster() throws InterruptedException {
+		System.out.println("*** Delete Cluster ***");
+		
+		try {
+			
+            WebElement s_menu_clusterList = driver.findElement(By.xpath("//a[@href='#/cluster/list']"));
+            s_menu_clusterList.click();
+			Thread.sleep(5000);
+			
+            WebElement s_list_cluster = driver.findElement(By.xpath("//div[@class='isul-flex-list']"));
+            System.out.println(s_list_cluster);
+	        
 			
 			} catch (Error e) {
 	            verificationErrors.append(e.toString());

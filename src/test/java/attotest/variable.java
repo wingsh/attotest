@@ -1,6 +1,9 @@
 package attotest;
 
 public class variable {
+	
+	public static String appURL = "http://10.61.129.81:8009";
+
 	// ** Login Case **
 	// NULL UserID & Password 
 	String LoginNoInputErrMsg = "Input your id or password";

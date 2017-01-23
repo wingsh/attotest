@@ -30,7 +30,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class testServiceTest extends variable{
 	
 	public RemoteWebDriver driver;
-	public static String appURL = "http://10.61.129.81:8009";
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	private StringBuffer verificationErrors = new StringBuffer();
 	private static final String CAPTURE_PATH = "test-output/";

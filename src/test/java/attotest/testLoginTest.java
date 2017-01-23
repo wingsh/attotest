@@ -28,7 +28,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class testLoginTest extends variable{
 	
 	public RemoteWebDriver driver;
-	public static String appURL = "http://10.61.129.81:8009";
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	private StringBuffer verificationErrors = new StringBuffer();
 	private static final String CAPTURE_PATH = "test-output/";
@@ -371,7 +370,7 @@ public class testLoginTest extends variable{
 				}
 			
 			// User
-            WebElement m_menu_user = driver.findElement(By.xpath("//i[@class='fa fa fa-user-secret']"));
+            WebElement m_menu_user = driver.findElement(By.xpath("//li/a/i[@class='fa fa fa-user-secret']"));
             m_menu_user.click();
 			Thread.sleep(5000);
 			
@@ -433,8 +432,8 @@ public class testLoginTest extends variable{
 		    profile.click();
 			Thread.sleep(1000);	
 
-			/*
-		    WebElement logout = driver.findElement(By.xpath("//i[@class='fa fa-sign-out']"));
+			
+		    WebElement logout = driver.findElement(By.xpath("//div/div/a/i[@class='fa fa-sign-out']"));
 		    logout.click();	    
 		    
 		    // Capture
@@ -447,7 +446,7 @@ public class testLoginTest extends variable{
 		 	
 			Thread.sleep(5000);	
 			
-			*/
+			
 			
 			} catch (Error e) {
 	            verificationErrors.append(e.toString());
