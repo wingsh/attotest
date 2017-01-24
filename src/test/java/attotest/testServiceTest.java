@@ -100,8 +100,11 @@ public class testServiceTest extends variable{
 		    WebElement btn_save = driver.findElement(By.xpath("//i[@class='fa fa-save']"));
 			btn_save.click();
 			
+			Thread.sleep(1000);	
+			
 		    WebElement nochoosecluster = driver.findElement(By.xpath("//div[@class='isul-notify-panel ng-binding']"));
 		    String Errmsg_nochoosecluster = nochoosecluster.getText();
+			System.out.println("No Input + Save - Error Message is : " + Errmsg_nochoosecluster);
 			assertEquals(Errmsg_nochoosecluster, ServiceNoInputErrMsg);
 			
 			// Capture
@@ -124,10 +127,14 @@ public class testServiceTest extends variable{
 			
 			btn_save.click();
 			
+			Thread.sleep(1000);	
 			
 		    WebElement maxtitle = driver.findElement(By.xpath("//div[@class='isul-notify-panel ng-binding']"));
 		    String ErrormsgMaxTitle = maxtitle.getText();
+			System.out.println("Max Titlet + Save - Error Message is : " + ErrormsgMaxTitle);
 			assertEquals(ErrormsgMaxTitle, ServicemaxTitleErrMsg);
+			
+			Thread.sleep(3000);	
 			
 			// Capture
 			try {
@@ -136,8 +143,6 @@ public class testServiceTest extends variable{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-	 	
-			Thread.sleep(1000);			
 			
 			
 			} catch (Error e) {

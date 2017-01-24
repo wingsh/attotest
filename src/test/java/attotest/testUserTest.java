@@ -92,12 +92,12 @@ public class testUserTest extends variable{
 		    // New Password Error Message
 		    WebElement noNewPasswordUser = driver.findElement(By.xpath("//form//div//label[5]//span[@class='error']"));
 		    String Errmsg_noNewPasswordUser = noNewPasswordUser.getText();
-			System.out.println("No Input + Add Subnet - Network Address Error Message is : " + Errmsg_noNewPasswordUser);
+			System.out.println("No Input + Done - New Password Error Message is : " + Errmsg_noNewPasswordUser);
 		    
 			//Repeat Password Error Message    
 		    WebElement noRepeatPasswordUser = driver.findElement(By.xpath("//form//div//label[6]//span[@class='error']"));
 		    String Errmsg_noRepeatPasswordUser = noRepeatPasswordUser.getText();
-			System.out.println("No Input + Add Subnet - Mask Error Message is : " + Errmsg_noRepeatPasswordUser);
+			System.out.println("No Input + Done - Repeat Password Error Message is : " + Errmsg_noRepeatPasswordUser);
 					    
 		    assertEquals(Errmsg_noNewPasswordUser, nullNewPasswordErrMsg);
 		    assertEquals(Errmsg_noRepeatPasswordUser, nullRepeatPasswordErrMsg);
