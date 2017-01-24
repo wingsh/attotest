@@ -25,7 +25,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class testSubnetTest extends variable{
+public class testUser extends variable{
 	
 	public RemoteWebDriver driver;
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -44,13 +44,13 @@ public class testSubnetTest extends variable{
 	    String loginWindow = driver.getWindowHandle();
 	    driver.switchTo().window(loginWindow);  
 	    
-		System.out.println("***** Starting Subnet Test Case *****");
+		System.out.println("***** Starting User Test Case *****");
 	    
 	}
 	
 	@Test(enabled = true, priority = 1)
 	public void testValidLoginTest() throws InterruptedException {
-		System.out.println("*** No Input Subnet ***");
+		System.out.println("*** No Input User ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
 
@@ -71,61 +71,41 @@ public class testSubnetTest extends variable{
 			login.submit();
 			Thread.sleep(10000);
 			
-			// Subnet
-			WebElement m_menu_subnet = driver.findElement(By.xpath("//i[@class='fa fa fa-retweet']"));
-            m_menu_subnet.click();
+			// User
+			WebElement m_menu_user = driver.findElement(By.xpath("//li/a/i[@class='fa fa fa-user-secret']"));
+            m_menu_user.click();
 			Thread.sleep(5000);
 			
-            //Check Subnet List Page
-			WebElement s_menu_subnetList = driver.findElement(By.xpath("//a[@href='#/subnet/list']"));
-            s_menu_subnetList.click();
+            //Check User Page
+			WebElement s_menu_yourprofile = driver.findElement(By.xpath("//a[@href='#/user/edit']"));
+            s_menu_yourprofile.click();
 			Thread.sleep(5000);
 			
-			if (!driver.getPageSource().contains("Subnet List"))
+			if (!driver.getPageSource().contains("Edit Your Profile"))
 				driver.close();
 			
 			
-            WebElement btn_subnetlist_add = driver.findElement(By.xpath("//i[@class='fa fa-plus fa-fw']"));
-            btn_subnetlist_add.click();
+            WebElement btn_user_done = driver.findElement(By.xpath("//input[@class='isul-save-button']"));
+            btn_user_done.click();
             
-            /*
-            //Check Add New Subnet Page
-            WebElement s_menu_addsubnet = driver.findElement(By.xpath("//*[contains(text(), 'Add Subnet')]"));
-            s_menu_addsubnet.click();
-			*/
-            
-			Thread.sleep(5000);
-			
-			if (!driver.getPageSource().contains("Add New Subnet"))
-				driver.close();
-			
-			
-		    WebElement btn_addsubnet = driver.findElement(By.xpath("//input[@class='isul-edit-button']"));
-		    btn_addsubnet.click();
 		    
-		    // Name Error Message
-		    WebElement noNetworkaddresssubnet = driver.findElement(By.xpath("//form//div//label[3]//span[@class='form-error']"));
-		    String Errmsg_noNetworkaddresssubnet = noNetworkaddresssubnet.getText();
-			System.out.println("No Input + Add Subnet - Network Address Error Message is : " + Errmsg_noNetworkaddresssubnet);
+		    // New Password Error Message
+		    WebElement noNewPasswordUser = driver.findElement(By.xpath("//form//div//label[5]//span[@class='error']"));
+		    String Errmsg_noNewPasswordUser = noNewPasswordUser.getText();
+			System.out.println("No Input + Add Subnet - Network Address Error Message is : " + Errmsg_noNewPasswordUser);
 		    
-			//ip Error Message    
-		    WebElement noMasksubnet = driver.findElement(By.xpath("//form//div//label[4]//span[@class='form-error']"));
-		    String Errmsg_noMasksubnet = noMasksubnet.getText();
-			System.out.println("No Input + Add Subnet - Mask Error Message is : " + Errmsg_noMasksubnet);
-			
-			// Hostname Error Message
-			WebElement novLansubnet = driver.findElement(By.xpath("//form//div//label[6]//span[@class='form-error']"));
-		    String Errmsg_novLansubnet = novLansubnet.getText();
-			System.out.println("No Input + Add Subnet - vLan Error Message is : " + Errmsg_novLansubnet);
+			//Repeat Password Error Message    
+		    WebElement noRepeatPasswordUser = driver.findElement(By.xpath("//form//div//label[6]//span[@class='error']"));
+		    String Errmsg_noRepeatPasswordUser = noRepeatPasswordUser.getText();
+			System.out.println("No Input + Add Subnet - Mask Error Message is : " + Errmsg_noRepeatPasswordUser);
 					    
-		    assertEquals(Errmsg_noNetworkaddresssubnet, SubnetNullNetworkAddressErrMsg);
-		    assertEquals(Errmsg_noMasksubnet, SubnetNullMaskErrMsg);
-		    assertEquals(Errmsg_novLansubnet, SubnetNullvLanErrMsg);
+		    assertEquals(Errmsg_noNewPasswordUser, nullNewPasswordErrMsg);
+		    assertEquals(Errmsg_noRepeatPasswordUser, nullRepeatPasswordErrMsg);
 		    
 			// Capture
 			try {
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Subnet-No Input Subnet.png"));
+				FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" User-No Input User.png"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -140,7 +120,7 @@ public class testSubnetTest extends variable{
 	
 	@AfterTest
 	public void tearDown() throws Exception {
-		System.out.println("***** Finished Subnet Test Case *****");
+		System.out.println("***** Finished User Test Case *****");
 		driver.quit();   
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {

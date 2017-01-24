@@ -74,7 +74,7 @@ public class testServiceTest extends variable{
 			login.submit();
 			Thread.sleep(10000);
 			
-            WebElement m_menu_service = driver.findElement(By.xpath("//*[contains(text(), 'Service')]"));
+			WebElement m_menu_service = driver.findElement(By.xpath("//i[@class='fa fa-cubes']"));
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			wait.until(ExpectedConditions.visibilityOf(m_menu_service));
 			
@@ -82,7 +82,7 @@ public class testServiceTest extends variable{
 			Thread.sleep(5000);
 			
             //Check Service List Page
-            WebElement s_menu_serviceList = driver.findElement(By.xpath("//*[contains(text(), 'Service List')]"));
+			WebElement s_menu_serviceList = driver.findElement(By.xpath("//a[@href='#/chaining/list']"));
             s_menu_serviceList.click();
 			Thread.sleep(5000);
 			
@@ -90,7 +90,7 @@ public class testServiceTest extends variable{
 				driver.close();
             
             //Check Add New Page
-            WebElement s_menu_addnew = driver.findElement(By.xpath("//*[contains(text(), 'Add New')]"));
+			WebElement s_menu_addnew = driver.findElement(By.xpath("//a[@href='#/chaining/new']"));
             s_menu_addnew.click();
 			Thread.sleep(5000);
 			

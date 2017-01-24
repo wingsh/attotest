@@ -89,6 +89,8 @@ public class variable {
 
 	
 	// ** User **
+	String nullNewPasswordErrMsg = "This value is required.";
+	String nullRepeatPasswordErrMsg = "This value is required.";
 
 
 }

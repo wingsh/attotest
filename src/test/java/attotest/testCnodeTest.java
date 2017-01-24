@@ -72,12 +72,12 @@ public class testCnodeTest extends variable{
 			Thread.sleep(10000);
 			
 			// Cnode
-            WebElement m_menu_cnode = driver.findElement(By.xpath("//*[contains(text(), 'Cnode')]"));
+			WebElement m_menu_cnode = driver.findElement(By.xpath("//i[@class='fa fa-desktop']"));
             m_menu_cnode.click();
 			Thread.sleep(5000);
 			
             //Check Cnode List Page
-            WebElement s_menu_cnodeList = driver.findElement(By.xpath("//*[contains(text(), 'Cnode List')]"));
+			WebElement s_menu_cnodeList = driver.findElement(By.xpath("//a[@href='#/cnode/list']"));
             s_menu_cnodeList.click();
 			Thread.sleep(5000);
 			
