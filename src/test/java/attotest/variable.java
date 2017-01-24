@@ -3,6 +3,9 @@ package attotest;
 public class variable {
 	
 	public static String appURL = "http://10.61.129.81:8009";
+	
+	String letter128 = "abcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffss";
+	String letter129 = "abcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffssjsabcdffss0";
 
 	// ** Login Case **
 	// NULL UserID & Password 
