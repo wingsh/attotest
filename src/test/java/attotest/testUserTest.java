@@ -25,7 +25,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class testUser extends variable{
+public class testUserTest extends variable{
 	
 	public RemoteWebDriver driver;
 	Timestamp timestamp = new Timestamp(System.currentTimeMillis());

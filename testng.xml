@@ -25,5 +25,10 @@
     <classes>
       <class name="attotest.testSubnetTest"/>
   </classes>
-  </test>      
+  </test> 
+  <test name="User Test ">
+    <classes>
+      <class name="attotest.testUserTest"/>
+  </classes>
+  </test>           
 </suite>
