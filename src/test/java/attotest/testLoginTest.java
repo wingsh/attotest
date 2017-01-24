@@ -413,6 +413,29 @@ public class testLoginTest extends variable{
 			
 			Thread.sleep(5000);	
 			
+			// License
+            WebElement m_menu_license = driver.findElement(By.xpath("//i[@class='fa fa-clipboard']"));
+            m_menu_license.click();
+			Thread.sleep(5000);
+			
+            // Check Log Page
+            WebElement s_menu_information = driver.findElement(By.xpath("//a[@href='#/license/info']"));
+            s_menu_information.click();
+			Thread.sleep(5000);
+			
+			if (!driver.getPageSource().contains("License Information"))
+				driver.close();
+	
+			// Capture
+			try {
+					File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+					FileUtils.copyFile(scrFile, new File(CAPTURE_PATH+timestamp+" Login Test-vaild_License.png"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}			
+			
+			Thread.sleep(5000);	
+			
             // Collapsed
             WebElement icon_collapsed = driver.findElement(By.xpath("//i[@class='fa fa-chevron-circle-left']"));
             icon_collapsed.click();
