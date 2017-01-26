@@ -74,7 +74,7 @@ public class testClusterTest extends variable{
 			
             WebElement s_menu_clusterList = driver.findElement(By.xpath("//a[@href='#/cluster/list']"));
             s_menu_clusterList.click();
-			Thread.sleep(5000);
+			Thread.sleep(10000);
 			
             WebElement s_menu_addcluster = driver.findElement(By.xpath("//a[@href='#/cluster/add']"));
 	        s_menu_addcluster.click();
