@@ -47,7 +47,7 @@ public class testLoginTest extends variable{
 	    
 	}
 	@Test(enabled = true, priority = 1)
-	public void testNullInputTest() throws InterruptedException {
+	public void testNullLoginTest() throws InterruptedException {
 		System.out.println("*** Null Input ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
@@ -87,7 +87,7 @@ public class testLoginTest extends variable{
 	
 	
 	@Test(enabled = true, priority = 2)
-	public void testInvaildUserTest() throws InterruptedException {
+	public void testInvaildUserLoginTest() throws InterruptedException {
 		System.out.println("*** Invalid UserID ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
@@ -130,7 +130,7 @@ public class testLoginTest extends variable{
 		}
 	}
 	@Test(enabled = true, priority = 3)
-	public void testInvaildPasswordTest() throws InterruptedException {
+	public void testInvaildPasswordLoginTest() throws InterruptedException {
 		System.out.println("*** Invalid Password ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();

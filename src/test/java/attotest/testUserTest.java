@@ -49,7 +49,7 @@ public class testUserTest extends variable{
 	}
 	
 	@Test(enabled = true, priority = 1)
-	public void testValidLoginTest() throws InterruptedException {
+	public void testNullUserTest() throws InterruptedException {
 		System.out.println("*** No Input User ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();

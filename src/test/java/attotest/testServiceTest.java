@@ -52,7 +52,7 @@ public class testServiceTest extends variable{
 	}
 	
 	@Test(enabled = true, priority = 1)
-	public void testInvalidServiceTest() throws InterruptedException {
+	public void testInvaildServiceTest() throws InterruptedException {
 		System.out.println("*** No Input Service ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
@@ -151,9 +151,9 @@ public class testServiceTest extends variable{
 		
 	}
 	
-	
+/*	
 	@Test(enabled = false, priority = 2)
-	public void testNOTServiceTest() throws InterruptedException {
+	public void testMaxTitleServiceTest() throws InterruptedException {
 		System.out.println("*** Service Max Title Test ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
@@ -224,7 +224,7 @@ public class testServiceTest extends variable{
 		}
 		
 	}
-	
+*/	
 	@AfterTest
 	public void tearDown() throws Exception {
 		System.out.println("***** Finished Service Test Case *****");

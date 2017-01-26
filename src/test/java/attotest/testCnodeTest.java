@@ -49,7 +49,7 @@ public class testCnodeTest extends variable{
 	}
 	
 	@Test(enabled = true, priority = 1)
-	public void testValidLoginTest() throws InterruptedException {
+	public void testNullCnodeTest() throws InterruptedException {
 		System.out.println("*** Not Input Cnode ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
@@ -110,14 +110,15 @@ public class testCnodeTest extends variable{
 		    String Errmsg_noipcnode = noipcnode.getText();
 			System.out.println("No Input + Add Cnode - ip Error Message is : " + Errmsg_noipcnode);
 			
+			/*
 			// Hostname Error Message
 			WebElement nohostnamecnode = driver.findElement(By.xpath("//form//div//label[4]//span[@class='error']"));
 		    String Errmsg_nohostnamecnode = nohostnamecnode.getText();
 			System.out.println("No Input + Add Cnode - Hostname Error Message is : " + Errmsg_nohostnamecnode);
-					    
+			*/		    
 		    assertEquals(Errmsg_nonamecnode, CnodeNullNameErrMsg);
 		    assertEquals(Errmsg_noipcnode, CnodeNullipErrMsg);
-		    assertEquals(Errmsg_nohostnamecnode, CnodeNullHostnameErrMsg);
+		    //assertEquals(Errmsg_nohostnamecnode, CnodeNullHostnameErrMsg);
 		    
 			// Capture
 			try {

@@ -68,7 +68,7 @@ public class testClusterTest extends variable{
 	}
 	
 	@Test(enabled = true, priority = 1)
-	public void testNullInput() throws InterruptedException {
+	public void testNullClusterTest() throws InterruptedException {
 		System.out.println("*** No Input Cluster ***");
 		try {	
 			
@@ -104,7 +104,7 @@ public class testClusterTest extends variable{
 	}
 	
 	@Test(enabled = true, priority = 2)
-	public void testCreateCluster() throws InterruptedException {
+	public void testCreateClusterTest() throws InterruptedException {
 		System.out.println("*** Create Cluster ***");
 		
 		try {
@@ -150,7 +150,7 @@ public class testClusterTest extends variable{
 	}
 	
 	@Test(enabled = true, priority = 3)
-	public void testDeleteCluster() throws InterruptedException {
+	public void testDeleteClusterTest() throws InterruptedException {
 		System.out.println("*** Delete Cluster ***");
 		
 		try {

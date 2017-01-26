@@ -49,7 +49,7 @@ public class testSubnetTest extends variable{
 	}
 	
 	@Test(enabled = true, priority = 1)
-	public void testValidLoginTest() throws InterruptedException {
+	public void testNullSubnetTest() throws InterruptedException {
 		System.out.println("*** No Input Subnet ***");
 		driver.navigate().to(appURL);
 		String strPageTitle = driver.getTitle();
